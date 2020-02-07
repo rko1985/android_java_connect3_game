@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
 
     int[] gameState = {2,2,2,2,2,2,2,2,2}; //0 yellow, 1 red, 2 empty
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 counter.setImageResource(R.drawable.yellow); //set image to yellow counter
                 activePlayer = 1; // set to red
             } else {
-                counter.setImageResource(R.drawable.red); //set imag
+                counter.setImageResource(R.drawable.red); //set image to red
                 activePlayer = 0;
             }
 
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
             //checking if winning position
             for (int[] winningPosition : winningPositions) {
+                Log.i("Game State", Arrays.toString(gameState));
+                Log.i("Winning Position", Arrays.toString(winningPosition));
                 if (gameState[winningPosition[0]] == gameState[winningPosition[1]] && gameState[winningPosition[1]] == gameState[winningPosition[2]] && gameState[winningPosition[0]] != 2) {
                     //if those conditions are met someone has one
                     gameActive = false;
